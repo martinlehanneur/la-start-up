@@ -2,13 +2,13 @@ from PIL import Image
 from math import sqrt
 import numpy as np
 from scipy.ndimage import convolve
-path = "../Downloads/tuile4.png" # Image path
+path = "../la-start-up/tuile4.png" # Image path
 img = Image.open(path)
 width, height = img.size
 newimg = Image.new("RGB", (width, height), "white")
 sobel_x = np.array([[-1,0,1],[-2,0,2],[-1,0,1]])
 sobel_y = np.array([[-1,-2,-1],[0,0,0],[1,2,1]])
-print(sobel_y)
+l = 0
 for x in range(1, width-1):  # ignore the edge pixels
     for y in range(1, height-1): # ignore edge pixels
         G = [[0,0,0],[0,0,0], [0,0,0]]
@@ -83,19 +83,20 @@ for x in range(1, width-1):  # ignore the edge pixels
         G[2][2] =int(var)/3
 
         # calculate the length of the gradient (Pythagorean theorem)
-        #length = math.sqrt((Gx * Gx) + (Gy * Gy))
+      
 
         Gx = np.sum(convolve(sobel_x, G))
         Gy = np.sum(convolve(sobel_y, G))
-#        card = sqrt(pow(Gx, 2)+pow(Gy, 2))/20
-        card = Gy/20
-        #print(length)
+        grad = sqrt(pow(Gx, 2)+pow(Gy, 2))/20
+        #print(grad)
         # normalise the length of gradient to the range 0 to 255
-
-
-        card = int(card)
+        grad = int(grad)
 
         # draw the length in the edge image
-        newimg.putpixel((x,y),(card, card, card))
+        newimg.putpixel((x,y),(grad, grad, grad))
+        l += 1
+        po = int(l/height*10000)/100
+        print(po,"%")
         
 newimg.show()
+newimg.save("../la-start-up/transfo.png")
