@@ -2,7 +2,7 @@ from PIL import Image
 from math import sqrt
 import numpy as np
 from scipy.ndimage import convolve
-path = "../Downloads/tuile4.png" # Image path
+path = "tuile4.png" # Image path
 img = Image.open(path)
 width, height = img.size
 newimg = Image.new("RGB", (width, height), "white")
