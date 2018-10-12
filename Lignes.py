@@ -60,9 +60,9 @@ for j in L[0]:
     σ += (pow(L[0][j] - µ, 2))/width
 
 σ = int(sqrt(σ))
-for k in L[0]:
-    if (L[0][k] >= µ + σ):
-        Ls.append(L[0].index(L[0][k]))
+for k,e in enumerate(L[0]):
+    if (e >= µ + σ):
+        Ls.append(k)
 
 print( "\nµ =", µ,"\nσ =", σ)  
 #plt.grid(True)
