@@ -9,6 +9,8 @@ Created on Mon Oct  8 09:41:03 2018
 #import matplotlib.pyplot as plt
 
 from PIL import Image
+from math import sqrt
+import numpy as np
 
 path = "../la-start-up/transfo.png" # Image path
 img = Image.open(path)
@@ -22,38 +24,44 @@ l = 0
 inc = 0
 front = 5
 Abs =[]
+np.array(L)
 
 for y in range (1, height):
     inc += 1
     l += 1
     Abs.append(l)
+    
     if (inc == front):
         inc = 0
         
         for x in range (1, width):
             p = img.getpixel((x, y))
             Temp.append(p[0])
-            L.append(Temp)
-           
+            
+        
         po = int(l/height*10000)/100
         print(po,"%")
+        
+    L.append(Temp)
+    Temp = []
        
 print("100 %")
 
 µ = 0
 for i in L[0]:
-    µ += L[0][i]/width
-
+    µ += (L[0][i])/width
+µ =int(µ)
 
 σ = 0
 for j in L[0]:
     σ += (pow(L[0][j] - µ, 2))/width
 
+σ = int(sqrt(σ))
 for k in L[0]:
     if (L[0][k] >= µ):
         Ls.append(L[0][k])
 
-print(µ,σ)  
+print( "\nµ =", µ,"\nσ =", σ)  
 #plt.grid(True)
 #plt.plot(Abs, Ls)
 #plt.show()
