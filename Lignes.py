@@ -20,11 +20,15 @@ Ls = []
 L = []
 Temp =[]
 Temps = []
+np.array(L)
+
 l = 0
 inc = 0
 front = 5
 Abs =[]
-np.array(L)
+
+σ = 0
+µ = 0
 
 for y in range (1, height):
     inc += 1
@@ -37,29 +41,28 @@ for y in range (1, height):
         for x in range (1, width):
             p = img.getpixel((x, y))
             Temp.append(p[0])
-            
         
         po = int(l/height*10000)/100
         print(po,"%")
         
-    L.append(Temp)
-    Temp = []
+        L.append(Temp)
+        Temp = []
        
 print("100 %")
 
-µ = 0
+
 for i in L[0]:
     µ += (L[0][i])/width
 µ =int(µ)
 
-σ = 0
+
 for j in L[0]:
     σ += (pow(L[0][j] - µ, 2))/width
 
 σ = int(sqrt(σ))
 for k in L[0]:
-    if (L[0][k] >= µ):
-        Ls.append(L[0][k])
+    if (L[0][k] >= µ + σ):
+        Ls.append(L[0].index(L[0][k]))
 
 print( "\nµ =", µ,"\nσ =", σ)  
 #plt.grid(True)
