@@ -53,15 +53,13 @@ print("100 %")
 
 for i in L[0]:
     µ += (L[0][i])/width
-µ =int(µ)
-
 
 for j in L[0]:
     σ += (pow(L[0][j] - µ, 2))/width
 
-σ = int(sqrt(σ))
+σ = sqrt(σ)
 for k,e in enumerate(L[0]):
-    if (e >= µ + σ):
+    if (e >= µ + 3*σ):
         Ls.append(k)
 
 print( "\nµ =", µ,"\nσ =", σ)  
