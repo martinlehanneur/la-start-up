@@ -88,7 +88,7 @@ for x in range(1, width-1):  # ignore the edge pixels
 
         Gx = np.sum(convolve(sobel_x, G))
         Gy = np.sum(convolve(sobel_y, G))
-        grad = sqrt(pow(Gx, 2)+pow(Gy, 2))/256
+        grad = sqrt(pow(Gx, 2)+pow(Gy, 2))/8
         #print(grad)
         # normalise the length of gradient to the range 0 to 255
         grad = int(grad)

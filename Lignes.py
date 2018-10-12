@@ -53,7 +53,7 @@ for k in L[0]:
     if (L[0][k] >= µ):
         Ls.append(L[0][k])
 
-print(µ)
+print(µ,σ)  
 #plt.grid(True)
 #plt.plot(Abs, Ls)
 #plt.show()
