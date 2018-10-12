@@ -2,6 +2,7 @@ from PIL import Image
 from math import sqrt
 import numpy as np
 from scipy.ndimage import convolve
+
 path = "../la-start-up/tuile4.png" # Image path
 img = Image.open(path)
 width, height = img.size
@@ -87,16 +88,16 @@ for x in range(1, width-1):  # ignore the edge pixels
 
         Gx = np.sum(convolve(sobel_x, G))
         Gy = np.sum(convolve(sobel_y, G))
-        grad = sqrt(pow(Gx, 2)+pow(Gy, 2))/20
+        grad = sqrt(pow(Gx, 2)+pow(Gy, 2))/10
         #print(grad)
         # normalise the length of gradient to the range 0 to 255
         grad = int(grad)
 
         # draw the length in the edge image
         newimg.putpixel((x,y),(grad, grad, grad))
-        l += 1
-        po = int(l/height*10000)/100
-        print(po,"%")
+    l += 1
+    po = int(l/width*10000)/100
+    print(po,"%")
         
 newimg.show()
 newimg.save("../la-start-up/transfo.png")
