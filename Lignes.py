@@ -25,7 +25,7 @@ np.array(L)
 inc = 0
 front = 2
 Abs =[]
-
+l = 0
 n = 0
 s = 0
 m = 0
@@ -34,21 +34,23 @@ for y in range (1, height):
     inc += 1
     
     if (inc == front):
+        Abs.append(n)
         n += 1
         inc = 0
         
         for x in range (1, width):
             p = img.getpixel((x, y))
             Temp.append(p[0])
-        
-#        po = int(l/height*10000)/100
-#        print(po,"%")
-        
         L.append(Temp)
         Temp = []
+    l += 1
+    po = l/10000*height
+    po =float(po)/float(100)
+    print po,"%"
        
-#print("100 %")
-
+       
+print "100 %"
+l = 0
 for y in range (1, n): 
     inc += 1
     if (inc == front):
@@ -61,15 +63,16 @@ for y in range (1, n):
             s += (pow(L[y][i] - m, 2))
         s = sqrt(s/width)
     
-        for i,v in enumerate(L[y]):
-            if (v >= m + 2*s):
+        for i,I in enumerate(L[y]):
+            if (I >= m + 2*s):
                 Temps.append(i)
         
         Ls.append(Temps)
         Temps = []
-#    po = int(l/height*10000)/100
-#    print po,"%"
+    l += 1
+    po = l/10000*n
+    po =float(po)/float(100)
 print "\nmoyenne :", m,"\nécart-type :", s  
-#plt.grid(True)
-#plt.plot(Abs, Ls)
-#plt.show()
+plt.grid(True)
+plt.plot(Ls[1])
+plt.show()
