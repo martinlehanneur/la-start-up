@@ -6,7 +6,7 @@ Created on Mon Oct  8 09:41:03 2018
 @author: QuentindSC
 """
 
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 from PIL import Image
 from math import sqrt
@@ -22,47 +22,54 @@ Temp =[]
 Temps = []
 np.array(L)
 
-l = 0
 inc = 0
-front = 5
+front = 2
 Abs =[]
 
-σ = 0
-µ = 0
+n = 0
+s = 0
+m = 0
 
 for y in range (1, height):
     inc += 1
-    l += 1
-    Abs.append(l)
     
     if (inc == front):
+        n += 1
         inc = 0
         
         for x in range (1, width):
             p = img.getpixel((x, y))
             Temp.append(p[0])
         
-        po = int(l/height*10000)/100
-        print(po,"%")
+#        po = int(l/height*10000)/100
+#        print(po,"%")
         
         L.append(Temp)
         Temp = []
        
-print("100 %")
+#print("100 %")
 
-
-for i in L[0]:
-    µ += (L[0][i])/width
-
-for j in L[0]:
-    σ += (pow(L[0][j] - µ, 2))/width
-
-σ = sqrt(σ)
-for k,e in enumerate(L[0]):
-    if (e >= µ + 3*σ):
-        Ls.append(k)
-
-print( "\nµ =", µ,"\nσ =", σ)  
+for y in range (1, n): 
+    inc += 1
+    if (inc == front):
+        inc = 0
+        for i in L[y]:
+            m += L[y][i]
+        m = m/width
+        
+        for i in L[y]:
+            s += (pow(L[y][i] - m, 2))
+        s = sqrt(s/width)
+    
+        for i,v in enumerate(L[y]):
+            if (v >= m + 2*s):
+                Temps.append(i)
+        
+        Ls.append(Temps)
+        Temps = []
+#    po = int(l/height*10000)/100
+#    print po,"%"
+print "\nmoyenne :", m,"\nécart-type :", s  
 #plt.grid(True)
 #plt.plot(Abs, Ls)
 #plt.show()
