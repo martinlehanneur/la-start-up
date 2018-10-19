@@ -16,15 +16,22 @@ path = "../la-start-up/transfo.png" # Image path
 img = Image.open(path)
 width, height = img.size
 newimg = Image.new("RGB", (width, height), "white")
+
 Ls = []
 L = []
 Temp =[]
 Temps = []
+
 np.array(L)
+np.array(Ls)
 
 inc = 0
 front = 2
-Abs =[]
+
+Abs = []
+Moy = []
+Var = []
+
 l = 0
 n = 0
 s = 0
@@ -44,13 +51,14 @@ for y in range (1, height):
         L.append(Temp)
         Temp = []
     l += 1
-    po = l/10000*height
+    po = l*10000/height
     po =float(po)/float(100)
     print po,"%"
        
        
 print "100 %"
 l = 0
+
 for y in range (1, n): 
     inc += 1
     if (inc == front):
@@ -58,11 +66,14 @@ for y in range (1, n):
         for i in L[y]:
             m += L[y][i]
         m = m/width
+        Moy.append(m);
         
         for i in L[y]:
             s += (pow(L[y][i] - m, 2))
-        s = sqrt(s/width)
-    
+        s = s/width
+        Var.append(int(s));
+        s = sqrt(s)
+        
         for i,I in enumerate(L[y]):
             if (I >= m + 2*s):
                 Temps.append(i)
@@ -70,9 +81,9 @@ for y in range (1, n):
         Ls.append(Temps)
         Temps = []
     l += 1
-    po = l/10000*n
+    po = l*10000/n
     po =float(po)/float(100)
-print "\nmoyenne :", m,"\nécart-type :", s  
+print "\nMoyennes :", Moy,"\nVariances :", Var  
 plt.grid(True)
-plt.plot(Ls[1])
+plt.plot(Ls[1]) #Affichage de l ligne voulue, ici la première.
 plt.show()
