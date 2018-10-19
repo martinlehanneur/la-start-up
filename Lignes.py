@@ -6,7 +6,7 @@ Created on Mon Oct  8 09:41:03 2018
 @author: QuentindSC
 """
 
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 from PIL import Image
 from math import sqrt
@@ -27,8 +27,8 @@ inc = 0
 front = 5
 Abs =[]
 
-σ = 0
-µ = 0
+Sigma= 0
+mu= 0
 
 for y in range (1, height):
     inc += 1
@@ -52,17 +52,17 @@ print("100 %")
 
 
 for i in L[0]:
-    µ += (L[0][i])/width
+    Sigma += (L[0][i])/width
 
 for j in L[0]:
-    σ += (pow(L[0][j] - µ, 2))/width
+    Sigma += (pow(L[0][j] - mu, 2))/width
 
-σ = sqrt(σ)
+Sigma= sqrt(Sigma)
 for k,e in enumerate(L[0]):
-    if (e >= µ + 3*σ):
+    if (e >= mu + 3*Sigma):
         Ls.append(k)
 
-print( "\nµ =", µ,"\nσ =", σ)  
-#plt.grid(True)
-#plt.plot(Abs, Ls)
-#plt.show()
+print( " mu =", mu," Sigma =", Sigma)  
+plt.grid(True)
+plt.plot(Abs, Ls)
+plt.show()
