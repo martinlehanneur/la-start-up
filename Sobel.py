@@ -96,8 +96,14 @@ for x in range(1, width-1):  # ignore the edge pixels
         # draw the length in the edge image
         newimg.putpixel((x,y),(grad, grad, grad))
     l = l + 1
+<<<<<<< HEAD
     po = int(l/width*10000)/100
     print(po,"%")
+=======
+    po = l*10000/width
+    po = float(po)/float(100)
+    print po,"%"
+>>>>>>> 03c7af45cc9ad16ff76ab0499da37ab193601748
         
 newimg.show()
 newimg.save("../la-start-up/transfo.png")
