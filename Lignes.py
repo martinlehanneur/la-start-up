@@ -20,7 +20,7 @@ np.array(L)
 
 
 inc = 0
-front = 5
+front = 4 #permet de prendre une ligne toute les front lignes
 
 Ave = []
 Ave2 = []
@@ -53,7 +53,7 @@ for y in range (1, height - 1):
     print po,"%"
        
        
-print "100 % *************************************"
+print "100 % *******************************************************************************************************"
 l = 0
         
 for y in range (0, n - 1):      
@@ -82,7 +82,7 @@ for y in range (0, n - 1):
     po =float(po)/float(100)
     print po,"%"
     
-print "100 % ************************************"
+print "100 % *******************************************************************************************************"
 l = 0
 
 def autocorr(rank):
@@ -95,7 +95,7 @@ def autocorr(rank):
         z = 0
     return Z; 
 
-Z = autocorr(89) 
+Z = autocorr(160) 
    
 for i in Z:
     a2 += i
@@ -119,11 +119,11 @@ for i in Z:
     TempZ = []     
     
     l += 1
-    po = l*10000/n
+    po = l*10000/len(Z)
     po =float(po)/float(100)
     print po,"%"
     
-print "100 % ***********************************"
+print "100 % *******************************************************************************************************"
     
 print "\n    AVERAGES :", Ave,"\n    STANDARD DEVIATIONS :", Stdev  
 
@@ -131,8 +131,8 @@ plt.figure(1)
 
 plt.subplot(211)
 plt.grid(True)
-plt.plot(L[89], '^')#Affichage de la ligne voulue.
-plt.plot(LI[89], '*')#Affichage en superposition des pics d'Intensity
+plt.plot(L[160], '^')#Affichage de la ligne voulue.
+plt.plot(LI[160], '*')#Affichage en superposition des pics d'Intensity
 plt.xlabel('Sample')
 plt.ylabel('Intensity') 
 
