@@ -590,6 +590,36 @@ int main (int argc, char *argv[])
     }
   }
 
+
+  if (!failed)
+  {
+  if(deviceController != NULL)
+  {
+    // send a landing command to the drone
+    error = deviceController->aRDrone3->sendPilotingTakeOff(deviceController->aRDrone3);
+  }
+}
+
+if (!failed)
+{
+if(deviceController != NULL)
+  {
+    // set the flag and speed value of the piloting command
+    error = deviceController->aRDrone3->setPilotingPCMDGaz(deviceController->aRDrone3, 50);
+  }
+}
+
+if (!failed)
+{
+if(deviceController != NULL)
+{
+  // send a takeoff command to the drone
+  error = deviceController->aRDrone3->sendPilotingLanding(deviceController->aRDrone3);
+}
+}
+
+
+
   if (!failed)
   {
     IHM_PrintInfo(ihm, "Running ... ('t' to takeoff ; Spacebar to land ; 'e' for emergency ; Arrow keys and ('r','f','d','g') to move ; 'q' to quit)");
