@@ -3,7 +3,7 @@ from math import sqrt
 import numpy as np
 from scipy.ndimage import convolve
 
-path = "/images/greyscale.png" # Image path
+path = "/la-start-up/images/greyscale.png" # Image path
 img = Image.open(path)
 width, height = img.size
 newimg = Image.new("RGB", (width, height), "white")
@@ -18,10 +18,10 @@ for x in range(1, width-1):  # ignore the edge pixels
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
+        var = r + g + b
         #var=int(var)
         # intensity ranges from 0 to 765 (255 * 3)
-        G[0][0] =int(var)/3
+        G[0][0] = int(var)/3
 
 
 
@@ -30,50 +30,50 @@ for x in range(1, width-1):  # ignore the edge pixels
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
-        G[0][1] =int(var)/3
+        var = r + g + b
+        G[0][1] = int(var)/3
 
         p = img.getpixel((x-1, y+1))
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
-        G[0][2] =int(var)/3
+        var = r + g + b
+        G[0][2] = int(var)/3
 
         # middle pixels
         p = img.getpixel((x, y-1))
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
+        var = r + g + b
 
-        G[1][0] =int(var)/3
+        G[1][0] = int(var)/3
 
         p = img.getpixel((x, y+1))
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
+        var = r + g + b
 
-        G[1][2] =int(var)/3
+        G[1][2] =  int(var)/3
 
         # right column
         p = img.getpixel((x+1, y-1))
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
+        var = r + g + b
 
-        G[2][0] =int(var)/3
+        G[2][0] = int(var)/3
 
         p = img.getpixel((x+1, y))
         r = p[0]
         g = p[1]
         b = p[2]
-        var=r + g + b
+        var  = r + g + b
 
 
-        G[2][1] =int(var)/3
+        G[2][1] = int(var)/3
 
         p = img.getpixel((x+1, y+1))
         r = p[0]
