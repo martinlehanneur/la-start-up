@@ -22,10 +22,12 @@ np.array(L)
 inc = 0
 front = 4 #permet de prendre une ligne toute les front lignes
 
+
 Ave = []
 Ave2 = []
 Stdev = []
 Stdev2 = []
+
 
 l = 0
 n = 0
@@ -35,6 +37,7 @@ a = 0
 a2 = 0
 
 for y in range (1, height - 1):
+
     inc += 1
     
     if (inc == front):
@@ -52,6 +55,7 @@ for y in range (1, height - 1):
     po =float(po)/float(100)
     print po,"%"
        
+
        
 print "100 % *******************************************************************************************************"
 l = 0
@@ -131,6 +135,7 @@ plt.figure(1)
 
 plt.subplot(211)
 plt.grid(True)
+
 plt.plot(L[160], '^')#Affichage de la ligne voulue.
 plt.plot(LI[160], '*')#Affichage en superposition des pics d'Intensity
 plt.xlabel('Sample')

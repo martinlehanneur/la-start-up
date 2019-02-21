@@ -3,7 +3,7 @@ from math import sqrt
 import numpy as np
 from scipy.ndimage import convolve
 
-path = "../la-start-up/tuile4.png" # Image path
+path = "/la-start-up/images/greyscale.png" # Image path
 img = Image.open(path)
 width, height = img.size
 newimg = Image.new("RGB", (width, height), "white")
